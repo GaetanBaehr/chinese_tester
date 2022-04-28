@@ -177,6 +177,8 @@ class Controller:
     def verify_answer(self, word = "", pronunciation = "", translation = ""):
         if self.selected_category == "pronunciation":
             anwserwords = sanitize_element(self.answer["word"])
+            if not word in self.answer["word"]:
+                return False
             answertranslation = sanitize_element(self.answer["translation"][self.answer["word"].index(word)])
             if word in anwserwords and translation in answertranslation:
                 return True
